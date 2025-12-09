@@ -1,4 +1,4 @@
-# Little Lemon — Restaurant React App (sample)
+# Little Lemon — Restaurant React App
 
 ## Install
 

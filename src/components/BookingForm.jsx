@@ -85,17 +85,20 @@ export default function BookingForm() {
 
   return (
     <form className="booking-form" onSubmit={handleSubmit} aria-live="polite">
-      <label htmlFor="name-input">Name</label>
-      <input
-        id="name-input"
-        value={name}
-        onChange={(e) => setName(e.target.value)}
-        aria-required="true"
-      />
+      <div>
+        <label htmlFor="name-input">Full Name *</label>
+        <input
+          id="name-input"
+          placeholder="Enter your full name"
+          value={name}
+          onChange={(e) => setName(e.target.value)}
+          aria-required="true"
+        />
+      </div>
 
       <div className="form-row">
         <div style={{ flex: 1 }}>
-          <label htmlFor="date-input">Date</label>
+          <label htmlFor="date-input">Date *</label>
           <input
             id="date-input"
             type="date"
@@ -106,9 +109,11 @@ export default function BookingForm() {
         </div>
 
         <div style={{ flex: 1 }}>
-          <label htmlFor="time-select">Time</label>
+          <label htmlFor="time-select">Time *</label>
           {loading ? (
-            <div>Loading times…</div>
+            <div style={{ padding: "0.875rem", color: "var(--muted)" }}>
+              Loading times…
+            </div>
           ) : (
             <select
               id="time-select"
@@ -130,9 +135,9 @@ export default function BookingForm() {
         </div>
       </div>
 
-      <div className="form-row" style={{ marginTop: 8 }}>
+      <div className="form-row">
         <div style={{ flex: 1 }}>
-          <label htmlFor="party-input">Party size</label>
+          <label htmlFor="party-input">Party Size *</label>
           <input
             id="party-input"
             type="number"
@@ -145,16 +150,17 @@ export default function BookingForm() {
         </div>
 
         <div style={{ flex: 1 }}>
-          <label htmlFor="notes">Notes (optional)</label>
+          <label htmlFor="notes">Special Requests</label>
           <input
             id="notes"
+            placeholder="Dietary restrictions, etc."
             value={notes}
             onChange={(e) => setNotes(e.target.value)}
           />
         </div>
       </div>
 
-      <div style={{ marginTop: 12, display: "flex", gap: 8 }}>
+      <div style={{ marginTop: 1.5 + "rem", display: "flex", gap: "0.75rem" }}>
         <button type="submit" aria-label="Submit booking" disabled={loading}>
           {loading ? "Booking…" : "Book Table"}
         </button>
@@ -176,10 +182,26 @@ export default function BookingForm() {
       {status && (
         <div
           role={status.type === "error" ? "alert" : "status"}
-          style={{ marginTop: 12 }}
+          style={{
+            marginTop: "1rem",
+            padding: "0.875rem",
+            borderRadius: "8px",
+            background:
+              status.type === "error"
+                ? "rgba(220, 38, 38, 0.1)"
+                : "rgba(34, 197, 94, 0.1)",
+            border: `1px solid ${
+              status.type === "error"
+                ? "rgba(220, 38, 38, 0.3)"
+                : "rgba(34, 197, 94, 0.3)"
+            }`,
+            color: status.type === "error" ? "#dc2626" : "#22c55e",
+          }}
         >
           {status.messages.map((msg, i) => (
-            <div key={i}>{msg}</div>
+            <div key={i} style={{ fontWeight: 500 }}>
+              {msg}
+            </div>
           ))}
         </div>
       )}
