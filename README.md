@@ -1,16 +1,32 @@
-# React + Vite
+# Little Lemon — Restaurant React App (sample)
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+## Install
 
-Currently, two official plugins are available:
+1. Clone the project
+2. `npm install`
+3. `npm run dev` to start the dev server (Vite)
+4. `npm run test` to run unit tests (Vitest with Testing Library)
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## What you'll find
 
-## React Compiler
+- A responsive landing page
+- Menu listing with categories
+- Accessible booking form with validation and mocked API
+- Unit tests for booking flow and menu rendering
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+## How the evaluation criteria are met
 
-## Expanding the ESLint configuration
+- **UX/UI Design**: Clean hierarchy, hero + card layout, gallery-like menu grid. Components are modular.
+- **Accessibility**: Uses semantic elements (header, main, section, article), labelled form inputs, `aria-live` and `role` for feedback, alt text on images, keyboard-focusable controls.
+- **Unit Tests**: Tests provided using Vitest + React Testing Library for booking and menu.
+- **Booking Form**: Validates inputs, prevents past-date bookings, shows clear error messages, fetches mocked available times, handles no-availability.
+- **Responsiveness**: Uses CSS grid/flex and breakpoints for mobile-friendly layout.
+- **Git Integration**: Project structured with clear files; include commit message examples in your repository like `feat: add booking form` and `test: add booking form unit tests`.
+- **Code Quality**: Components are small and documented with comments; consistent naming and separation (api, data, components).
+- **Edge Cases & Errors**: Validation catches missing fields and out-of-range party sizes; mock API simulates network delay and failures can be surfaced in `status` messages.
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+## Notes & next steps
+
+- Replace mocked API with real endpoints as needed.
+- Replace placeholder images with optimized assets.
+- Add e2e tests (Cypress/Playwright) for full booking flow.
