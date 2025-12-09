@@ -12,14 +12,11 @@ export default function BookingForm() {
   const [status, setStatus] = useState(null);
   const [loading, setLoading] = useState(false);
 
-  // ----------------------------------------------------
-  // FIXED EFFECT — no synchronous setState calls
-  // ----------------------------------------------------
   useEffect(() => {
     let mounted = true;
 
     async function loadTimes() {
-      if (mounted) setLoading(true); // async → safe
+      if (mounted) setLoading(true);
 
       const t = await fetchAvailableTimes(date);
 
@@ -37,9 +34,6 @@ export default function BookingForm() {
     };
   }, [date]);
 
-  // ----------------------------------------------------
-  // Validation
-  // ----------------------------------------------------
   const validate = () => {
     const errors = [];
 
@@ -55,9 +49,6 @@ export default function BookingForm() {
     return errors;
   };
 
-  // ----------------------------------------------------
-  // Submit Handler
-  // ----------------------------------------------------
   const handleSubmit = async (e) => {
     e.preventDefault();
     setStatus(null);
@@ -92,9 +83,6 @@ export default function BookingForm() {
     }
   };
 
-  // ----------------------------------------------------
-  // JSX
-  // ----------------------------------------------------
   return (
     <form className="booking-form" onSubmit={handleSubmit} aria-live="polite">
       <label htmlFor="name-input">Name</label>
